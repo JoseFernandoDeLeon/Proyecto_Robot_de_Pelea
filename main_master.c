@@ -39,29 +39,154 @@
 /*------------------------------------------------------------------------------
  * Constantes
 ------------------------------------------------------------------------------*/
-#define _XTAL_FREQ 8000000      // Oscilador de 8 MHz
+#define _XTAL_FREQ 500000       // Oscilador de 500 kHz
+#define IN_MIN 0                // Valor minimo de entrada del potenciometro
+#define IN_MAX 255              // Valor máximo de entrada del potenciometro
+#define OUT_MIN 20               // Valor minimo de ancho de pulso de señal PWM
+#define OUT_MAX 80              // Valor máximo de ancho de pulso de señal PWM
 
 /*------------------------------------------------------------------------------
  * Variables
 ------------------------------------------------------------------------------*/
+unsigned short CCPR_1 = 0;        // Variable para almacenar ancho de pulso al hacer la interpolación lineal
+unsigned short CCPR_2 = 0;        // Variable para almacenar ancho de pulso al hacer la interpolación lineal
 
 /*------------------------------------------------------------------------------
  * Prototipos de funciones
 ------------------------------------------------------------------------------*/
 void setup (void);
 
+unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max, 
+            unsigned short out_min, unsigned short out_max);
+
+void move_servo(uint8_t servo, unsigned short CCPR);
+
 /*------------------------------------------------------------------------------
  * Interrupciones
 ------------------------------------------------------------------------------*/
-
+void __interrupt() isr (void){
+    if(PIR1bits.ADIF){                      // Fue interrupción del ADC?
+        if(ADCON0bits.CHS == 0){            // Verificamos sea AN0 el canal seleccionado
+            move_servo (1,CCPR_1);
+        }
+        if (ADCON0bits.CHS == 0b0010){
+            move_servo (2,CCPR_2);
+        }
+        PIR1bits.ADIF = 0;                  // Limpiamos bandera de interrupción
+    }
+    return;
+}
 /*------------------------------------------------------------------------------
  * Ciclo principal
 ------------------------------------------------------------------------------*/
-
+void main(void) {
+    setup();
+    while(1){
+        if (ADCON0bits.GO == 0) {
+        if (ADCON0bits.CHS == 0b0000)
+            ADCON0bits.CHS = 0b0010;
+        else
+            ADCON0bits.CHS = 0b0000;
+        
+        __delay_us(1000);
+        ADCON0bits.GO = 1;
+        
+    } 
+    }
+    return;
+}
 /*------------------------------------------------------------------------------
  * Configuración
 ------------------------------------------------------------------------------*/
+void setup(void){
+    ANSEL = 0b11111111;                // PORTA y PORTE como entrada analógica
+    ANSELH = 0;                 // I/O digitales
+    TRISA = 0b11111111;                // PORTA como entrada
+    PORTA = 0;
+    
+    // Configuración reloj interno
+    OSCCONbits.IRCF = 0b011;    // IRCF <2:0> 011 -> 500 kHz
+    OSCCONbits.SCS = 1;         // Oscilador interno
+    
+    // Configuración ADC
+    ADCON0bits.ADCS = 0b01;     // Fosc/8
+    ADCON1bits.VCFG0 = 0;       // VDD
+    ADCON1bits.VCFG1 = 0;       // VSS
+    ADCON0bits.CHS = 0b0000;    // Seleccionamos el AN0
+    ADCON1bits.ADFM = 0;        // Justificado a la izquierda
+    ADCON0bits.ADON = 1;        // Habilitamos modulo ADC
+    __delay_us(40);             // Sample time
+    
+    // Configuración PWM
+    TRISCbits.TRISC2 = 1;       // RC2 -> CCP1 como entrada
+    TRISCbits.TRISC1 = 1;       // RC1 -> CCP2 como entrada
+    PR2 = 156;                  // periodo de 20 ms
+    
+    // Configuración CCP
+    CCP1CON = 0;                // Apagamos CCP1
+    CCP1CONbits.P1M = 0;        // Modo single output
+    
+    CCP1CONbits.CCP1M = 0b1100; // Asignación de modo a PWM1
+    CCP2CONbits.CCP2M = 0b1100; // Asignación de modo a PWM2
+    
+    CCPR1L = 155>>2;
+    CCP1CONbits.DC1B = 155 & 0b11;    // Valor inicial del duty cycle PWM1
+    
+    CCPR2L = 155>>2;
+    CCP2CONbits.DC2B0 = 155 & 0b01;
+    CCP2CONbits.DC2B1 = 155 & 0b10;   //  Valor inicial del duty cycle PWM2
+            
+    
+    PIR1bits.TMR2IF = 0;        // Limpiamos bandera de interrupcion del TMR2
+    T2CONbits.T2CKPS = 0b11;    // prescaler 1:16
+    T2CONbits.TMR2ON = 1;       // Encendemos TMR2
+    while(!PIR1bits.TMR2IF);    // Esperar un ciclo del TMR2
+    PIR1bits.TMR2IF = 0;        // Limpiamos bandera de interrupcion del TMR2 nuevamente
+    
+    TRISCbits.TRISC2 = 0;       // RC2 -> CCP1 como salida del PWM2
+    TRISCbits.TRISC1 = 0;       // RC1 -> CCP2 como salida del PWM2
 
+    // Configuracion interrupciones
+    INTCONbits.PEIE = 1;        // Habilitamos int. de perifericos
+    INTCONbits.GIE = 1;         // Habilitamos int. globales
+    
+    PIR1bits.ADIF = 0;          // Limpiamos bandera de ADC
+    PIE1bits.ADIE = 1;          // Habilitamos interrupcion de ADC
+    
+}
 /*------------------------------------------------------------------------------
  * Funciones
 ------------------------------------------------------------------------------*/
+
+/* Función para hacer la interpolación lineal del valor de la entrada analógica 
+*  usando solo el registro ADRESH (8 bits) al ancho de pulso del PWM (10 bits), 
+* usando la ecuación:
+*  y = y0 + [(y1 - y0)/(x1-x0)]*(x-x0)
+*  -------------------------------------------------------------------
+*  | x0 -> valor mínimo de ADC | y0 -> valor mínimo de ancho de pulso|
+*  | x  -> valor actual de ADC | y  -> resultado de la interpolación | 
+*  | x1 -> valor máximo de ADC | y1 -> valor máximo de ancho de puslo|
+*  ------------------------------------------------------------------- 
+*/
+unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max, 
+                         unsigned short out_min, unsigned short out_max){
+    
+    return (unsigned short)(out_min+((float)(out_max-out_min)/(in_max-in_min))*(value-in_min));
+}
+
+/*Función para posicionar un servomotor en base al valor de un potenciómetro*/
+void move_servo(uint8_t servo,  unsigned short CCPR) {
+        
+    if (servo == 1){
+        CCPR = interpole(ADRESH, IN_MIN, IN_MAX, OUT_MIN, OUT_MAX); // Valor de ancho de pulso
+        CCPR1L = (uint8_t)(CCPR>>2);    // Guardamos los 8 bits mas significativos en CPR1L
+        CCP1CONbits.DC1B = CCPR & 0b11; // Guardamos los 2 bits menos significativos en DC1B
+    }
+    else {
+        CCPR = interpole(ADRESH, IN_MIN, IN_MAX, OUT_MIN, OUT_MAX); // Valor de ancho de pulso
+        CCPR2L = (uint8_t) (CCPR>>2);
+        CCP2CONbits.DC2B0 = CCPR & 0b10;
+        CCP2CONbits.DC2B1 = CCPR & 0b01;   
+    }
+    return;
+}
