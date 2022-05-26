@@ -61,17 +61,22 @@ unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max,
 
 void move_servo(uint8_t servo, unsigned short CCPR);
 
+void send_data (uint8_t data, uint8_t slave);
+
 /*------------------------------------------------------------------------------
  * Interrupciones
 ------------------------------------------------------------------------------*/
 void __interrupt() isr (void){
+    
     if(PIR1bits.ADIF){                      // Fue interrupción del ADC?
-        if(ADCON0bits.CHS == 0){            // Verificamos sea AN0 el canal seleccionado
+        
+        if(ADCON0bits.CHS == 0b0000){            // Verificamos sea AN0 el canal seleccionado
             move_servo (1,CCPR_1);
         }
         if (ADCON0bits.CHS == 0b0010){
             move_servo (2,CCPR_2);
         }
+        
         PIR1bits.ADIF = 0;                  // Limpiamos bandera de interrupción
     }
     return;
@@ -82,16 +87,23 @@ void __interrupt() isr (void){
 void main(void) {
     setup();
     while(1){
-        if (ADCON0bits.GO == 0) {
-        if (ADCON0bits.CHS == 0b0000)
-            ADCON0bits.CHS = 0b0010;
+        if (ADCON0bits.GO == 0) {          // Verificar si se debe hacer una conversión
+        if (ADCON0bits.CHS == 0b0000)       
+            ADCON0bits.CHS = 0b0001;       // Convertir el valor del potenciómetro RP2
+        
+        if (ADCON0bits.CHS == 0b0001)
+            ADCON0bits.CHS = 0b0010;       // Convertir el valor del potenciómetro LA1
+        
+        if (ADCON0bits.CHS == 0b0010)
+            ADCON0bits.CHS = 0b0011;       // Convertir el valor del potenciómetro LP2
+        
         else
-            ADCON0bits.CHS = 0b0000;
+            ADCON0bits.CHS = 0b0000;       // Convertir el valor del potenciómetro RA1 
         
         __delay_us(1000);
         ADCON0bits.GO = 1;
         
-    } 
+        } 
     }
     return;
 }
@@ -99,11 +111,19 @@ void main(void) {
  * Configuración
 ------------------------------------------------------------------------------*/
 void setup(void){
-    ANSEL = 0b11111111;                // PORTA y PORTE como entrada analógica
-    ANSELH = 0;                 // I/O digitales
-    TRISA = 0b11111111;                // PORTA como entrada
-    PORTA = 0;
+    ANSEL = 0b11111111;        // PORTA y PORTE como entrada analógica
+    ANSELH = 0;                // I/O digitales
     
+    TRISA = 0b11111111;        // PORTA como entrada
+    PORTA = 0;                 // Limpiamos PORTA  
+            
+    TRISD = 0b00000000;        // TRISD como salida
+    PORTD = 0b00000001;        // RD0 habilitado (SS SLAVE I)
+    
+    //Configuración SPI MASTER de puertos
+    TRISC = 0b00010000;         // -> SDI entrada, SCK y SD0 como salida
+    PORTC = 0;
+        
     // Configuración reloj interno
     OSCCONbits.IRCF = 0b011;    // IRCF <2:0> 011 -> 500 kHz
     OSCCONbits.SCS = 1;         // Oscilador interno
@@ -145,7 +165,18 @@ void setup(void){
     
     TRISCbits.TRISC2 = 0;       // RC2 -> CCP1 como salida del PWM2
     TRISCbits.TRISC1 = 0;       // RC1 -> CCP2 como salida del PWM2
-
+    
+    // Configuración del SPI (MASTER)
+    
+    // SSPCON <5:0>
+    SSPCONbits.SSPM = 0b0000;   // -> SPI Maestro, Reloj -> Fosc/4 (250kbits/s)
+    SSPCONbits.CKP = 0;         // -> Reloj inactivo en 0
+    SSPCONbits.SSPEN = 1;       // -> Habilitamos pines de SPI
+    // SSPSTAT<7:6>
+    SSPSTATbits.CKE = 1;        // -> Dato enviado cada flanco de subida
+    SSPSTATbits.SMP = 1;        // -> Dato al final del pulso de reloj
+    SSPBUF = 0xFF;              // Enviamos un dato inicial
+        
     // Configuracion interrupciones
     INTCONbits.PEIE = 1;        // Habilitamos int. de perifericos
     INTCONbits.GIE = 1;         // Habilitamos int. globales
@@ -190,3 +221,16 @@ void move_servo(uint8_t servo,  unsigned short CCPR) {
     }
     return;
 }
+
+void send_data (uint8_t data, uint8_t slave){
+    
+    if (slave == 1){
+    PORTDbits.RD0 = 0;              // Habilitamos el esclavo para recibir datos
+    SSPBUF = data;                  // Cargamos valor del contador al buffer
+    while(!SSPSTATbits.BF){}        // Esperamos a que termine el envio
+    PORTDbits.RD0 = 1;              // Deshabilitamos el esclavo hasta el siguiente envío.
+    
+    }
+    return;
+}
+

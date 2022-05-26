@@ -122,10 +122,11 @@ void setup(void){
     TRISCbits.TRISC2 = 0;       // Habilitamos salida de PWM
 
     // Configuracion interrupciones
-    PIR1bits.ADIF = 0;          // Limpiamos bandera de ADC
-    PIE1bits.ADIE = 1;          // Habilitamos interrupcion de ADC
     INTCONbits.PEIE = 1;        // Habilitamos int. de perifericos
     INTCONbits.GIE = 1;         // Habilitamos int. globales
+    
+    PIR1bits.ADIF = 0;          // Limpiamos bandera de ADC
+    PIE1bits.ADIE = 1;          // Habilitamos interrupcion de ADC
     
 }
 

@@ -14,6 +14,8 @@
                    projectFiles="true">
       <itemPath>main_master.c</itemPath>
       <itemPath>PWM.c</itemPath>
+      <itemPath>main_slave1.c</itemPath>
+      <itemPath>SPI_full_duplex.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -147,6 +149,8 @@
         <property key="program-the-device-with-default-config-words" value="true"/>
         <property key="remove-unused-sections" value="true"/>
       </HI-TECH-LINK>
+      <item path="PWM.c" ex="true" overriding="false">
+      </item>
       <Simulator>
         <property key="codecoverage.enabled" value="Disable"/>
         <property key="codecoverage.enableoutputtofile" value="false"/>
