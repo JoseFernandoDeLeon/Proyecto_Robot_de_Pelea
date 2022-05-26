@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production\JSFR-001.X.production.hex">
+  <executable name="dist/default/production\JSFR-00_MA.X.production.hex">
     <memory name="program">
       <units>words</units>
       <length>8192</length>
-      <used>2927</used>
-      <free>5265</free>
+      <used>3055</used>
+      <free>5137</free>
     </memory>
     <memory name="data">
       <units>bytes</units>

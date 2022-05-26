@@ -14,7 +14,6 @@
                    projectFiles="true">
       <itemPath>main_master.c</itemPath>
       <itemPath>PWM.c</itemPath>
-      <itemPath>main_slave1.c</itemPath>
       <itemPath>SPI_full_duplex.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -150,6 +149,24 @@
         <property key="remove-unused-sections" value="true"/>
       </HI-TECH-LINK>
       <item path="PWM.c" ex="true" overriding="false">
+        <HI-TECH-COMP>
+        </HI-TECH-COMP>
+        <HI-TECH-LINK>
+        </HI-TECH-LINK>
+        <XC8-CO>
+        </XC8-CO>
+        <XC8-config-global>
+        </XC8-config-global>
+      </item>
+      <item path="SPI_full_duplex.c" ex="true" overriding="false">
+        <HI-TECH-COMP>
+        </HI-TECH-COMP>
+        <HI-TECH-LINK>
+        </HI-TECH-LINK>
+        <XC8-CO>
+        </XC8-CO>
+        <XC8-config-global>
+        </XC8-config-global>
       </item>
       <Simulator>
         <property key="codecoverage.enabled" value="Disable"/>
@@ -1108,6 +1125,16 @@
         <property key="user-pack-device-support" value=""/>
         <property key="wpo-lto" value="false"/>
       </XC8-config-global>
+      <item path="main_master.c" ex="false" overriding="false">
+        <HI-TECH-COMP>
+        </HI-TECH-COMP>
+        <HI-TECH-LINK>
+        </HI-TECH-LINK>
+        <XC8-CO>
+        </XC8-CO>
+        <XC8-config-global>
+        </XC8-config-global>
+      </item>
     </conf>
   </confs>
 </configurationDescriptor>

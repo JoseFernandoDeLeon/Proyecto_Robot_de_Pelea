@@ -1,4 +1,4 @@
-# 1 "main_master.c"
+# 1 "main_slave1.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,8 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main_master.c" 2
-# 18 "main_master.c"
+# 1 "main_slave1.c" 2
+# 16 "main_slave1.c"
 #pragma config FOSC = INTRC_NOCLKOUT
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
@@ -2644,106 +2644,20 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 2 3
-# 36 "main_master.c" 2
+# 34 "main_slave1.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.35\\pic\\include\\c90\\stdint.h" 1 3
-# 37 "main_master.c" 2
-# 51 "main_master.c"
-unsigned short CCPR_1 = 0;
-unsigned short CCPR_2 = 0;
-
-
-
-
-void setup (void);
-
-unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max,
-            unsigned short out_min, unsigned short out_max);
-
-void move_servo(uint8_t servo, unsigned short CCPR);
-
-void send_data (uint8_t data, uint8_t slave);
-
-
-
-
-void __attribute__((picinterrupt(("")))) isr (void){
-
-    if(PIR1bits.ADIF){
-
-        if(ADCON0bits.CHS == 0b0000){
-            move_servo (1,CCPR_1);
-        }
-        else if(ADCON0bits.CHS == 0b0001){
-            send_data(ADRESH,1);
-            PORTDbits.RD1 = 0;
-        }
-        else if (ADCON0bits.CHS == 0b0010){
-            move_servo (2,CCPR_2);
-        }
-        else{
-            send_data(ADRESH,1);
-            PORTDbits.RD1 = 1;
-        }
-        PIR1bits.ADIF = 0;
-    }
-    return;
-}
-
-
-
-void main(void) {
-    setup();
-    while(1){
-        if (ADCON0bits.GO == 0) {
-        if (ADCON0bits.CHS == 0b0000)
-            ADCON0bits.CHS = 0b0001;
-
-        else if (ADCON0bits.CHS == 0b0001)
-            ADCON0bits.CHS = 0b0010;
-
-        else if (ADCON0bits.CHS == 0b0010)
-            ADCON0bits.CHS = 0b0011;
-
-        else
-            ADCON0bits.CHS = 0b0000;
-
-        _delay((unsigned long)((1000)*(500000/4000000.0)));
-        ADCON0bits.GO = 1;
-
-        }
-    }
-    return;
-}
-
-
-
+# 35 "main_slave1.c" 2
+# 61 "main_slave1.c"
 void setup(void){
-    ANSEL = 0b11111111;
-    ANSELH = 0;
-
-    TRISA = 0b11111111;
-    PORTA = 0;
-
-    TRISD = 0b00000000;
-    PORTD = 0b00000000;
 
 
-    TRISC = 0b00010000;
+    TRISC = 0b00011000;
     PORTC = 0;
 
 
     OSCCONbits.IRCF = 0b011;
     OSCCONbits.SCS = 1;
-
-
-    ADCON0bits.ADCS = 0b01;
-    ADCON1bits.VCFG0 = 0;
-    ADCON1bits.VCFG1 = 0;
-    ADCON0bits.CHS = 0b0000;
-    ADCON1bits.ADFM = 0;
-    ADCON0bits.ADON = 1;
-    _delay((unsigned long)((40)*(500000/4000000.0)));
 
 
     TRISCbits.TRISC2 = 1;
@@ -2777,54 +2691,18 @@ void setup(void){
 
 
 
-    SSPCONbits.SSPM = 0b0000;
+    SSPCONbits.SSPM = 0b0100;
     SSPCONbits.CKP = 0;
     SSPCONbits.SSPEN = 1;
 
     SSPSTATbits.CKE = 1;
-    SSPSTATbits.SMP = 1;
-    SSPBUF = 0xFF;
+    SSPSTATbits.SMP = 0;
 
 
     INTCONbits.PEIE = 1;
     INTCONbits.GIE = 1;
 
-    PIR1bits.ADIF = 0;
-    PIE1bits.ADIE = 1;
+    PIR1bits.SSPIF = 0;
+    PIE1bits.SSPIE = 1;
 
-}
-# 209 "main_master.c"
-unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max,
-                         unsigned short out_min, unsigned short out_max){
-
-    return (unsigned short)(out_min+((float)(out_max-out_min)/(in_max-in_min))*(value-in_min));
-}
-
-
-void move_servo(uint8_t servo, unsigned short CCPR) {
-
-    if (servo == 1){
-        CCPR = interpole(ADRESH, 0, 255, 20, 80);
-        CCPR1L = (uint8_t)(CCPR>>2);
-        CCP1CONbits.DC1B = CCPR & 0b11;
-    }
-    else {
-        CCPR = interpole(ADRESH, 0, 255, 20, 80);
-        CCPR2L = (uint8_t) (CCPR>>2);
-        CCP2CONbits.DC2B0 = CCPR & 0b10;
-        CCP2CONbits.DC2B1 = CCPR & 0b01;
-    }
-    return;
-}
-
-void send_data (uint8_t data, uint8_t slave){
-
-    if (slave == 1){
-    PORTDbits.RD0 = 0;
-    SSPBUF = data;
-    while(!SSPSTATbits.BF){}
-    PORTDbits.RD0 = 1;
-
-    }
-    return;
 }

@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>JSFR-001</name>
+            <name>JSFR-001_MA</name>
             <creation-uuid>752561d9-4858-4c78-8e90-24658d4e6cca</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>

@@ -73,10 +73,17 @@ void __interrupt() isr (void){
         if(ADCON0bits.CHS == 0b0000){            // Verificamos sea AN0 el canal seleccionado
             move_servo (1,CCPR_1);
         }
-        if (ADCON0bits.CHS == 0b0010){
+        else if(ADCON0bits.CHS == 0b0001){
+            PORTDbits.RD1 = 0;
+            send_data(ADRESH,1);
+        }
+        else if (ADCON0bits.CHS == 0b0010){
             move_servo (2,CCPR_2);
         }
-        
+        else{
+            PORTDbits.RD1 = 1;
+            send_data(ADRESH,1);
+        }
         PIR1bits.ADIF = 0;                  // Limpiamos bandera de interrupción
     }
     return;
@@ -91,10 +98,10 @@ void main(void) {
         if (ADCON0bits.CHS == 0b0000)       
             ADCON0bits.CHS = 0b0001;       // Convertir el valor del potenciómetro RP2
         
-        if (ADCON0bits.CHS == 0b0001)
+        else if (ADCON0bits.CHS == 0b0001)
             ADCON0bits.CHS = 0b0010;       // Convertir el valor del potenciómetro LA1
         
-        if (ADCON0bits.CHS == 0b0010)
+        else if (ADCON0bits.CHS == 0b0010)
             ADCON0bits.CHS = 0b0011;       // Convertir el valor del potenciómetro LP2
         
         else
@@ -118,7 +125,7 @@ void setup(void){
     PORTA = 0;                 // Limpiamos PORTA  
             
     TRISD = 0b00000000;        // TRISD como salida
-    PORTD = 0b00000001;        // RD0 habilitado (SS SLAVE I)
+    PORTD = 0b00000000;        // RD0 habilitado (SS SLAVE I)
     
     //Configuración SPI MASTER de puertos
     TRISC = 0b00010000;         // -> SDI entrada, SCK y SD0 como salida
