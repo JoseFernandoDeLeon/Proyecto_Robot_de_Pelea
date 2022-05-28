@@ -2683,8 +2683,6 @@ void __attribute__((picinterrupt(("")))) isr (void){
     {
         if (!PORTBbits.RB0){
             mode_flag = !mode_flag;
-
-
         }
 
         if (!PORTBbits.RB1){

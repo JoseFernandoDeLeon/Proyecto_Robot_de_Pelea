@@ -21,15 +21,15 @@
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
 "79 C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
 [v _isr isr `II(v  1 e 1 0 ]
-"125
+"123
 [v _main main `(v  1 e 1 0 ]
-"160
+"158
 [v _setup setup `(v  1 e 1 0 ]
-"257
+"255
 [v _interpole interpole `(us  1 e 2 0 ]
-"264
+"262
 [v _move_servo move_servo `(v  1 e 1 0 ]
-"281
+"279
 [v _send_data send_data `(v  1 e 1 0 ]
 "167 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
@@ -354,53 +354,53 @@
 [v _CCPR_2 CCPR_2 `us  1 e 2 0 ]
 "59
 [v _mode_flag mode_flag `uc  1 e 1 0 ]
-"125
+"123
 [v _main main `(v  1 e 1 0 ]
 {
-"156
+"154
 } 0
-"160
+"158
 [v _setup setup `(v  1 e 1 0 ]
 {
-"251
+"249
 } 0
 "79
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"121
+"119
 } 0
-"281
+"279
 [v _send_data send_data `(v  1 e 1 0 ]
 {
 [v send_data@data data `uc  1 a 1 wreg ]
 [v send_data@data data `uc  1 a 1 wreg ]
-"283
+"281
 [v send_data@data data `uc  1 a 1 0 ]
-"289
+"287
 } 0
-"264
+"262
 [v _move_servo move_servo `(v  1 e 1 0 ]
 {
 [v move_servo@servo servo `uc  1 a 1 wreg ]
 [v move_servo@servo servo `uc  1 a 1 wreg ]
 [v move_servo@CCPR CCPR `us  1 p 2 11 ]
-"266
+"264
 [v move_servo@servo servo `uc  1 a 1 79 ]
-"278
+"276
 } 0
-"257
+"255
 [v _interpole interpole `(us  1 e 2 0 ]
 {
 [v interpole@value value `uc  1 a 1 wreg ]
 [v interpole@value value `uc  1 a 1 wreg ]
 [v interpole@in_min in_min `uc  1 p 1 5 ]
 [v interpole@in_max in_max `uc  1 p 1 6 ]
-"258
+"256
 [v interpole@out_min out_min `us  1 p 2 7 ]
 [v interpole@out_max out_max `us  1 p 2 9 ]
-"260
+"258
 [v interpole@value value `uc  1 a 1 78 ]
-"261
+"259
 } 0
 "10 C:\Program Files\Microchip\xc8\v2.35\pic\sources\c90\common\xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]

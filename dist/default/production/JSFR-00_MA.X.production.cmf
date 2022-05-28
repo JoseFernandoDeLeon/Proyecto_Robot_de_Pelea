@@ -32,7 +32,7 @@ cstackBANK1 BANK1 1 A0 A0 15 1 1
 intentry CODE 0 4 4 C 2 1
 bssBANK1 BANK1 1 B5 B5 9 1 1
 config CONFIG 4 2007 2007 2 2 1
-$C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.o
+$C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
 idloc IDLOC 5 2000 2000 4 2 1
 reset_vec CODE 0 0 0 3 2 1
 end_init CODE 0 10 10 3 2 1
@@ -83,22 +83,22 @@ STRING 1000-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\JSFR-00_MA.X.production.o
-13 cinit CODE >514:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.s
-13 cinit CODE >517:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.s
-13 cinit CODE >546:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.s
-14 cinit CODE >547:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.s
-15 cinit CODE >548:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.s
-16 cinit CODE >549:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.s
-17 cinit CODE >550:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.s
-18 cinit CODE >551:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.s
-19 cinit CODE >552:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.s
-1A cinit CODE >553:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.s
-1B cinit CODE >554:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.s
-1C cinit CODE >555:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.s
-1D cinit CODE >556:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.s
-1E cinit CODE >562:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.s
-1E cinit CODE >564:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.s
-1F cinit CODE >565:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.s
+13 cinit CODE >514:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
+13 cinit CODE >517:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
+13 cinit CODE >546:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
+14 cinit CODE >547:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
+15 cinit CODE >548:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
+16 cinit CODE >549:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
+17 cinit CODE >550:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
+18 cinit CODE >551:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
+19 cinit CODE >552:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
+1A cinit CODE >553:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
+1B cinit CODE >554:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
+1C cinit CODE >555:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
+1D cinit CODE >556:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
+1E cinit CODE >562:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
+1E cinit CODE >564:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
+1F cinit CODE >565:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
 4 intentry CODE >79:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
 383 text11 CODE >10:C:\Program Files\Microchip\xc8\v2.35\pic\sources\c90\common\sprcadd.c
 383 text11 CODE >21:C:\Program Files\Microchip\xc8\v2.35\pic\sources\c90\common\sprcadd.c
@@ -668,144 +668,144 @@ FED text6 CODE >41:C:\Program Files\Microchip\xc8\v2.35\pic\sources\c90\common\x
 FF6 text6 CODE >42:C:\Program Files\Microchip\xc8\v2.35\pic\sources\c90\common\xxtofl.c
 FF7 text6 CODE >43:C:\Program Files\Microchip\xc8\v2.35\pic\sources\c90\common\xxtofl.c
 FFF text6 CODE >44:C:\Program Files\Microchip\xc8\v2.35\pic\sources\c90\common\xxtofl.c
-E94 text5 CODE >257:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-E97 text5 CODE >260:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-EB5 text5 CODE >260:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-ED1 text5 CODE >260:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-EFF text5 CODE >260:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-F45 text5 CODE >261:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D64 text4 CODE >264:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D67 text4 CODE >266:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D6C text4 CODE >267:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D89 text4 CODE >268:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D8D text4 CODE >268:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D90 text4 CODE >268:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D97 text4 CODE >269:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-DA8 text4 CODE >270:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-DA9 text4 CODE >272:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-DC6 text4 CODE >273:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-DCA text4 CODE >273:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-DCD text4 CODE >273:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-DD4 text4 CODE >274:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-DE5 text4 CODE >275:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-DF7 text4 CODE >278:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-7E8 text3 CODE >281:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-7E9 text3 CODE >283:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-7EC text3 CODE >284:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-7EE text3 CODE >285:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-7F4 text3 CODE >286:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-7F7 text3 CODE >289:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+E94 text5 CODE >255:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+E97 text5 CODE >258:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+EB5 text5 CODE >258:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+ED1 text5 CODE >258:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+EFF text5 CODE >258:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+F45 text5 CODE >259:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D64 text4 CODE >262:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D67 text4 CODE >264:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D6C text4 CODE >265:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D89 text4 CODE >266:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D8D text4 CODE >266:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D90 text4 CODE >266:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D97 text4 CODE >267:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+DA8 text4 CODE >268:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+DA9 text4 CODE >270:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+DC6 text4 CODE >271:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+DCA text4 CODE >271:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+DCD text4 CODE >271:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+DD4 text4 CODE >272:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+DE5 text4 CODE >273:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+DF7 text4 CODE >276:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+7E8 text3 CODE >279:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+7E9 text3 CODE >281:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+7EC text3 CODE >282:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+7EE text3 CODE >283:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+7F4 text3 CODE >284:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+7F7 text3 CODE >287:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
 CDD text2 CODE >79:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
 CDD text2 CODE >81:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
 CE1 text2 CODE >83:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
 CE7 text2 CODE >84:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CF3 text2 CODE >89:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CF3 text2 CODE >87:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CF5 text2 CODE >89:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
 CF5 text2 CODE >91:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CF5 text2 CODE >93:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CF6 text2 CODE >93:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
 CF6 text2 CODE >95:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CF6 text2 CODE >97:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CF7 text2 CODE >96:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
 CF7 text2 CODE >98:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CF7 text2 CODE >100:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CFC text2 CODE >102:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D03 text2 CODE >102:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D07 text2 CODE >103:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D11 text2 CODE >104:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D12 text2 CODE >105:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D1B text2 CODE >105:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D1F text2 CODE >106:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D22 text2 CODE >107:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D28 text2 CODE >108:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D33 text2 CODE >109:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D34 text2 CODE >110:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D3D text2 CODE >110:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D41 text2 CODE >111:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D4B text2 CODE >112:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D4C text2 CODE >113:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D4C text2 CODE >114:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D4F text2 CODE >115:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D56 text2 CODE >118:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-D59 text2 CODE >121:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CFC text2 CODE >100:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D03 text2 CODE >100:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D07 text2 CODE >101:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D11 text2 CODE >102:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D12 text2 CODE >103:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D1B text2 CODE >103:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D1F text2 CODE >104:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D22 text2 CODE >105:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D28 text2 CODE >106:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D33 text2 CODE >107:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D34 text2 CODE >108:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D3D text2 CODE >108:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D41 text2 CODE >109:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D4B text2 CODE >110:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D4C text2 CODE >111:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D4C text2 CODE >112:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D4F text2 CODE >113:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D56 text2 CODE >116:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+D59 text2 CODE >119:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C59 text1 CODE >158:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
 C59 text1 CODE >160:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C59 text1 CODE >162:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C5D text1 CODE >163:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C5E text1 CODE >165:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C62 text1 CODE >166:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C65 text1 CODE >168:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C68 text1 CODE >169:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C6B text1 CODE >172:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C6F text1 CODE >173:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C72 text1 CODE >175:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C75 text1 CODE >176:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C76 text1 CODE >177:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C77 text1 CODE >178:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C78 text1 CODE >180:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C79 text1 CODE >181:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C7A text1 CODE >182:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C7B text1 CODE >183:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C7C text1 CODE >185:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C7D text1 CODE >188:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C7F text1 CODE >189:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C82 text1 CODE >192:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C88 text1 CODE >193:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C89 text1 CODE >196:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C8F text1 CODE >197:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C92 text1 CODE >198:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C93 text1 CODE >199:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C97 text1 CODE >200:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C9A text1 CODE >201:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C9D text1 CODE >202:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CA0 text1 CODE >205:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CA3 text1 CODE >206:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CA4 text1 CODE >207:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CA6 text1 CODE >210:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CA9 text1 CODE >211:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CAB text1 CODE >213:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CAF text1 CODE >214:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CB3 text1 CODE >216:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CB5 text1 CODE >217:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CB7 text1 CODE >219:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CB9 text1 CODE >220:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CBA text1 CODE >221:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CBB text1 CODE >224:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CBC text1 CODE >225:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CBE text1 CODE >226:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CBF text1 CODE >227:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CC3 text1 CODE >228:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CC4 text1 CODE >230:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CC7 text1 CODE >231:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CC8 text1 CODE >236:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CCC text1 CODE >237:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CCD text1 CODE >238:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CCE text1 CODE >240:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CD1 text1 CODE >241:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CD2 text1 CODE >242:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CD6 text1 CODE >245:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CD7 text1 CODE >246:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CD8 text1 CODE >248:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CD9 text1 CODE >249:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-CDC text1 CODE >251:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-BF2 maintext CODE >125:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-BF2 maintext CODE >126:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-BF7 maintext CODE >128:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-BFD maintext CODE >129:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C04 maintext CODE >129:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C08 maintext CODE >130:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C0F maintext CODE >132:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C18 maintext CODE >132:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C1C maintext CODE >133:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C23 maintext CODE >135:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C2C maintext CODE >135:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C30 maintext CODE >136:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C37 maintext CODE >139:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C3B maintext CODE >141:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C42 maintext CODE >142:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C45 maintext CODE >145:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C4C maintext CODE >146:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C4F maintext CODE >147:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C50 maintext CODE >148:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C51 maintext CODE >149:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C51 maintext CODE >150:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
-C54 maintext CODE >151:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C5D text1 CODE >161:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C5E text1 CODE >163:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C62 text1 CODE >164:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C65 text1 CODE >166:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C68 text1 CODE >167:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C6B text1 CODE >170:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C6F text1 CODE >171:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C72 text1 CODE >173:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C75 text1 CODE >174:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C76 text1 CODE >175:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C77 text1 CODE >176:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C78 text1 CODE >178:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C79 text1 CODE >179:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C7A text1 CODE >180:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C7B text1 CODE >181:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C7C text1 CODE >183:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C7D text1 CODE >186:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C7F text1 CODE >187:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C82 text1 CODE >190:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C88 text1 CODE >191:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C89 text1 CODE >194:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C8F text1 CODE >195:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C92 text1 CODE >196:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C93 text1 CODE >197:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C97 text1 CODE >198:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C9A text1 CODE >199:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C9D text1 CODE >200:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CA0 text1 CODE >203:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CA3 text1 CODE >204:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CA4 text1 CODE >205:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CA6 text1 CODE >208:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CA9 text1 CODE >209:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CAB text1 CODE >211:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CAF text1 CODE >212:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CB3 text1 CODE >214:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CB5 text1 CODE >215:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CB7 text1 CODE >217:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CB9 text1 CODE >218:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CBA text1 CODE >219:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CBB text1 CODE >222:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CBC text1 CODE >223:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CBE text1 CODE >224:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CBF text1 CODE >225:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CC3 text1 CODE >226:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CC4 text1 CODE >228:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CC7 text1 CODE >229:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CC8 text1 CODE >234:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CCC text1 CODE >235:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CCD text1 CODE >236:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CCE text1 CODE >238:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CD1 text1 CODE >239:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CD2 text1 CODE >240:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CD6 text1 CODE >243:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CD7 text1 CODE >244:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CD8 text1 CODE >246:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CD9 text1 CODE >247:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+CDC text1 CODE >249:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+BF2 maintext CODE >123:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+BF2 maintext CODE >124:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+BF7 maintext CODE >126:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+BFD maintext CODE >127:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C04 maintext CODE >127:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C08 maintext CODE >128:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C0F maintext CODE >130:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C18 maintext CODE >130:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C1C maintext CODE >131:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C23 maintext CODE >133:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C2C maintext CODE >133:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C30 maintext CODE >134:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C37 maintext CODE >137:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C3B maintext CODE >139:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C42 maintext CODE >140:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C45 maintext CODE >143:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C4C maintext CODE >144:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C4F maintext CODE >145:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C50 maintext CODE >146:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C51 maintext CODE >147:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C51 maintext CODE >148:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
+C54 maintext CODE >149:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -826,10 +826,10 @@ __Hspace_3 0 0 ABS 0 - -
 __Hspace_4 4010 0 ABS 0 - -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.o
+___sp 0 0 STACK 2 stack C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
 _main 17E4 0 CODE 0 maintext dist/default/production\JSFR-00_MA.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\JSFR-00_MA.X.production.o
-start 20 0 CODE 0 init C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.o
+start 20 0 CODE 0 init C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
 ___flmul@aexp 4C 0 BANK0 1 cstackBANK0 dist/default/production\JSFR-00_MA.X.production.o
 ___flmul@bexp 4D 0 BANK0 1 cstackBANK0 dist/default/production\JSFR-00_MA.X.production.o
 ___flmul@prod 4E 0 BANK0 1 cstackBANK0 dist/default/production\JSFR-00_MA.X.production.o
@@ -839,12 +839,12 @@ _OPTION_REGbits 81 0 ABS 0 - dist/default/production\JSFR-00_MA.X.production.o
 interpole@out_max A9 0 BANK1 1 cstackBANK1 dist/default/production\JSFR-00_MA.X.production.o
 interpole@out_min A7 0 BANK1 1 cstackBANK1 dist/default/production\JSFR-00_MA.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
 _OSCCONbits 8F 0 ABS 0 - dist/default/production\JSFR-00_MA.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\JSFR-00_MA.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
@@ -871,8 +871,8 @@ __end_of___flmul 706 0 CODE 0 text8 dist/default/production\JSFR-00_MA.X.product
 __end_of___fltol 1D28 0 CODE 0 text7 dist/default/production\JSFR-00_MA.X.production.o
 _send_data FD0 0 CODE 0 text3 dist/default/production\JSFR-00_MA.X.production.o
 __Umul8_16@multiplicand 70 0 COMMON 1 cstackCOMMON dist/default/production\JSFR-00_MA.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.o
-___stacklo 0 0 ABS 0 - C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.o
+___stackhi 0 0 ABS 0 - C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
+___stacklo 0 0 ABS 0 - C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
 ___fladd@a 58 0 BANK0 1 cstackBANK0 dist/default/production\JSFR-00_MA.X.production.o
 ___fladd@b 54 0 BANK0 1 cstackBANK0 dist/default/production\JSFR-00_MA.X.production.o
 ___fldiv@a 20 0 BANK0 1 cstackBANK0 dist/default/production\JSFR-00_MA.X.production.o
@@ -886,7 +886,7 @@ __pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\JSFR-00_MA.X.pro
 __pcstackBANK1 A0 0 BANK1 1 cstackBANK1 dist/default/production\JSFR-00_MA.X.production.o
 _SSPBUF 13 0 ABS 0 - dist/default/production\JSFR-00_MA.X.production.o
 ?_interpole A5 0 BANK1 1 cstackBANK1 dist/default/production\JSFR-00_MA.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.o
+___int_sp 0 0 STACK 2 stack C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -942,7 +942,7 @@ __end_of_isr 1AC8 0 CODE 0 text2 dist/default/production\JSFR-00_MA.X.production
 interpole@in_max A6 0 BANK1 1 cstackBANK1 dist/default/production\JSFR-00_MA.X.production.o
 interpole@in_min A5 0 BANK1 1 cstackBANK1 dist/default/production\JSFR-00_MA.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsi8s.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
 __end_of___xxtofl 2000 0 CODE 0 text6 dist/default/production\JSFR-00_MA.X.production.o
 __LbssBANK1 0 0 ABS 0 bssBANK1 -
 _PIE1bits 8C 0 ABS 0 - dist/default/production\JSFR-00_MA.X.production.o
