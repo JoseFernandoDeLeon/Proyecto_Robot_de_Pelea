@@ -1,4 +1,4 @@
-# 1 "main_slave1.c"
+# 1 "main_master.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,8 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main_slave1.c" 2
-# 16 "main_slave1.c"
+# 1 "main_master.c" 2
+# 18 "main_master.c"
 #pragma config FOSC = INTRC_NOCLKOUT
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
@@ -2644,12 +2644,11 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 2 3
-# 34 "main_slave1.c" 2
+# 36 "main_master.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.35\\pic\\include\\c90\\stdint.h" 1 3
-# 35 "main_slave1.c" 2
-<<<<<<< HEAD
-# 49 "main_slave1.c"
+# 37 "main_master.c" 2
+# 51 "main_master.c"
 unsigned short CCPR_1 = 0;
 unsigned short CCPR_2 = 0;
 
@@ -2663,21 +2662,32 @@ unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max,
 
 void move_servo(uint8_t servo, unsigned short CCPR);
 
+void send_data (uint8_t data);
+
+
 
 
 void __attribute__((picinterrupt(("")))) isr (void){
-    if (PIR1bits.SSPIF){
-        if (PORTAbits.RA0 == 0){
-            CCPR_1 = SSPBUF;
-            move_servo(1,CCPR_1);
-        }
-        else if (PORTAbits.RA0 == 1){
-            CCPR_2 = SSPBUF;
-            move_servo(2,CCPR_2);
-        }
 
+    if(PIR1bits.ADIF){
 
-        PIR1bits.SSPIF = 0;
+        if(ADCON0bits.CHS == 0b0000){
+            move_servo (1,CCPR_1);
+        }
+        else if(ADCON0bits.CHS == 0b0001){
+            PORTDbits.RD1 = 0;
+            send_data(ADRESH);
+            _delay((unsigned long)((50)*(500000/4000.0)));
+        }
+        else if (ADCON0bits.CHS == 0b0010){
+            move_servo (2,CCPR_2);
+        }
+        else{
+            PORTDbits.RD1 = 1;
+            send_data(ADRESH);
+            _delay((unsigned long)((50)*(500000/4000.0)));
+        }
+        PIR1bits.ADIF = 0;
     }
     return;
 }
@@ -2687,6 +2697,23 @@ void __attribute__((picinterrupt(("")))) isr (void){
 void main(void) {
     setup();
     while(1){
+        if (ADCON0bits.GO == 0) {
+        if (ADCON0bits.CHS == 0b0000)
+            ADCON0bits.CHS = 0b0001;
+
+        else if (ADCON0bits.CHS == 0b0001)
+            ADCON0bits.CHS = 0b0010;
+
+        else if (ADCON0bits.CHS == 0b0010)
+            ADCON0bits.CHS = 0b0011;
+
+        else
+            ADCON0bits.CHS = 0b0000;
+
+        _delay((unsigned long)((1000)*(500000/4000000.0)));
+        ADCON0bits.GO = 1;
+
+        }
 
     }
     return;
@@ -2694,26 +2721,32 @@ void main(void) {
 
 
 
-
 void setup(void){
-
-
-    ANSEL = 0;
+    ANSEL = 0b11111111;
     ANSELH = 0;
 
-    TRISA = 0b00100001;
+    TRISA = 0b11111111;
     PORTA = 0;
 
-    TRISD = 0;
-    PORTD = 0;
+    TRISD = 0b00000000;
+    PORTD = 0b00000000;
 
 
-    TRISC = 0b00011000;
+    TRISC = 0b00010000;
     PORTC = 0;
 
 
     OSCCONbits.IRCF = 0b011;
     OSCCONbits.SCS = 1;
+
+
+    ADCON0bits.ADCS = 0b01;
+    ADCON1bits.VCFG0 = 0;
+    ADCON1bits.VCFG1 = 0;
+    ADCON0bits.CHS = 0b0000;
+    ADCON1bits.ADFM = 0;
+    ADCON0bits.ADON = 1;
+    _delay((unsigned long)((40)*(500000/4000000.0)));
 
 
     TRISCbits.TRISC2 = 1;
@@ -2747,19 +2780,20 @@ void setup(void){
 
 
 
-    SSPCONbits.SSPM = 0b0100;
+    SSPCONbits.SSPM = 0b0000;
     SSPCONbits.CKP = 0;
     SSPCONbits.SSPEN = 1;
 
     SSPSTATbits.CKE = 1;
-    SSPSTATbits.SMP = 0;
+    SSPSTATbits.SMP = 1;
+    SSPBUF = 0xFF;
 
 
     INTCONbits.PEIE = 1;
     INTCONbits.GIE = 1;
 
-    PIE1bits.SSPIE = 1;
-    PIR1bits.SSPIF = 0;
+    PIR1bits.ADIF = 0;
+    PIE1bits.ADIE = 1;
 
 }
 
@@ -2770,78 +2804,28 @@ unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max,
 }
 
 
-
 void move_servo(uint8_t servo, unsigned short CCPR) {
 
     if (servo == 1){
-        CCPR = interpole(SSPBUF, 0, 255, 20, 80);
+        CCPR = interpole(ADRESH, 0, 255, 20, 80);
         CCPR1L = (uint8_t)(CCPR>>2);
         CCP1CONbits.DC1B = CCPR & 0b11;
     }
     else {
-        CCPR = interpole(SSPBUF, 0, 255, 20, 80);
+        CCPR = interpole(ADRESH, 0, 255, 20, 80);
         CCPR2L = (uint8_t) (CCPR>>2);
         CCP2CONbits.DC2B0 = CCPR & 0b10;
         CCP2CONbits.DC2B1 = CCPR & 0b01;
     }
     return;
-=======
-# 61 "main_slave1.c"
-void setup(void){
+}
 
+void send_data (uint8_t data){
 
-    TRISC = 0b00011000;
-    PORTC = 0;
+    PORTDbits.RD0 = 0;
+    SSPBUF = data;
+    while(!SSPSTATbits.BF){}
+    PORTDbits.RD0 = 1;
 
-
-    OSCCONbits.IRCF = 0b011;
-    OSCCONbits.SCS = 1;
-
-
-    TRISCbits.TRISC2 = 1;
-    TRISCbits.TRISC1 = 1;
-    PR2 = 156;
-
-
-    CCP1CON = 0;
-    CCP1CONbits.P1M = 0;
-
-    CCP1CONbits.CCP1M = 0b1100;
-    CCP2CONbits.CCP2M = 0b1100;
-
-    CCPR1L = 155>>2;
-    CCP1CONbits.DC1B = 155 & 0b11;
-
-    CCPR2L = 155>>2;
-    CCP2CONbits.DC2B0 = 155 & 0b01;
-    CCP2CONbits.DC2B1 = 155 & 0b10;
-
-
-    PIR1bits.TMR2IF = 0;
-    T2CONbits.T2CKPS = 0b11;
-    T2CONbits.TMR2ON = 1;
-    while(!PIR1bits.TMR2IF);
-    PIR1bits.TMR2IF = 0;
-
-    TRISCbits.TRISC2 = 0;
-    TRISCbits.TRISC1 = 0;
-
-
-
-
-    SSPCONbits.SSPM = 0b0100;
-    SSPCONbits.CKP = 0;
-    SSPCONbits.SSPEN = 1;
-
-    SSPSTATbits.CKE = 1;
-    SSPSTATbits.SMP = 0;
-
-
-    INTCONbits.PEIE = 1;
-    INTCONbits.GIE = 1;
-
-    PIR1bits.SSPIF = 0;
-    PIE1bits.SSPIE = 1;
-
->>>>>>> origin/master
+    return;
 }

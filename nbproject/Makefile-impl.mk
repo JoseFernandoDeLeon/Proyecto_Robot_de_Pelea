@@ -24,7 +24,11 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
+<<<<<<< HEAD
 PROJECTNAME=JSFR-001_SL.X
+=======
+PROJECTNAME=JSFR-00_MA.X
+>>>>>>> origin/master
 
 # Active Configuration
 DEFAULTCONF=default

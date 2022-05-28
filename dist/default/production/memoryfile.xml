@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
+<<<<<<< HEAD
   <executable name="dist/default/production\JSFR-001_SL.X.production.hex">
     <memory name="program">
       <units>words</units>
@@ -12,6 +13,20 @@
       <length>368</length>
       <used>120</used>
       <free>248</free>
+=======
+  <executable name="dist/default/production\JSFR-00_MA.X.production.hex">
+    <memory name="program">
+      <units>words</units>
+      <length>8192</length>
+      <used>3054</used>
+      <free>5138</free>
+    </memory>
+    <memory name="data">
+      <units>bytes</units>
+      <length>368</length>
+      <used>121</used>
+      <free>247</free>
+>>>>>>> origin/master
     </memory>
   </executable>
 </project>
