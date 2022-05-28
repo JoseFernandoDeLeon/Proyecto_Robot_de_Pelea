@@ -54,14 +54,14 @@ unsigned short CCPR_2 = 0;        // Variable para almacenar ancho de pulso al h
 /*------------------------------------------------------------------------------
  * Prototipos de funciones
 ------------------------------------------------------------------------------*/
-void setup (void);
+void setup (void);                  // Prototipo de función SETUP
 
 unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max, 
-            unsigned short out_min, unsigned short out_max);
+            unsigned short out_min, unsigned short out_max);                // Prototipo de función interpolación
 
-void move_servo(uint8_t servo, unsigned short CCPR);
+void move_servo(uint8_t servo, unsigned short CCPR);           // Prototipo de función para mover los servos
 
-void send_data (uint8_t data);
+void send_data (uint8_t data);                  //Prototipo de función para enviar información
 
 /*------------------------------------------------------------------------------
  * Interrupciones
@@ -70,21 +70,21 @@ void __interrupt() isr (void){
     
     if(PIR1bits.ADIF){                      // Fue interrupción del ADC?
         
-        if(ADCON0bits.CHS == 0b0000){            // Verificamos sea AN0 el canal seleccionado
-            move_servo (1,CCPR_1);
+        if(ADCON0bits.CHS == 0b0000){            // Verificamos que AN0 sea el canal seleccionado
+            move_servo (1,CCPR_1);               // Mover servo RA1 (en el master)
         }
-        else if(ADCON0bits.CHS == 0b0001){
-            PORTDbits.RD1 = 0;
+        else if(ADCON0bits.CHS == 0b0001){       // Verificamos que AN1 sea el canal seleccionado
+            PORTDbits.RD1 = 0;                   // Mover servo RP2 (en el slave por medio de SPI verificando el bit RD1)
             send_data(ADRESH);
-            __delay_ms(50);
+            __delay_ms(50);                      // Esperamos que el slave reciba el dato y movilice el servo
         }
-        else if (ADCON0bits.CHS == 0b0010){
-            move_servo (2,CCPR_2);
+        else if (ADCON0bits.CHS == 0b0010){      // Verificamos que AN2 sea el canal seleccionado
+            move_servo (2,CCPR_2);               // Mover servo LA1 (en el master)
         }
-        else{
-            PORTDbits.RD1 = 1;
-            send_data(ADRESH);
-            __delay_ms(50);
+        else{                                    // Verificamos que AN2 sea el canal seleccionado
+            PORTDbits.RD1 = 1;                   // Mover servo LP2 (en el slave por medio de SPI verificando el bit RD1)
+            send_data(ADRESH);              
+            __delay_ms(50);                      // Esperamos que el slave reciba el dato y movilice el servo
         }
         PIR1bits.ADIF = 0;                  // Limpiamos bandera de interrupción
     }
@@ -196,13 +196,14 @@ void setup(void){
     
 }
 
+//Función para interpolar valores de entrada a valores de salida
 unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max, 
                          unsigned short out_min, unsigned short out_max){
     
     return (unsigned short)(out_min+((float)(out_max-out_min)/(in_max-in_min))*(value-in_min));
 }
 
-/*Función para posicionar un servomotor en base al valor de un potenciómetro*/
+//Función para posicionar un servomotor en base al valor de un potenciómetro
 void move_servo(uint8_t servo,  unsigned short CCPR) {
         
     if (servo == 1){
@@ -219,6 +220,7 @@ void move_servo(uint8_t servo,  unsigned short CCPR) {
     return;
 }
 
+//Función para enviar información mediante SPI
 void send_data (uint8_t data){
 
     PORTDbits.RD0 = 0;              // Habilitamos el esclavo para recibir datos
