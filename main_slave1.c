@@ -38,7 +38,6 @@
  * Constantes
 ------------------------------------------------------------------------------*/
 #define _XTAL_FREQ 500000       // Oscilador de 500 kHz
-<<<<<<< HEAD
 #define IN_MIN 0                // Valor minimo de entrada del potenciometro
 #define IN_MAX 255              // Valor máximo de entrada del potenciometro
 #define OUT_MIN 20               // Valor minimo de ancho de pulso de señal PWM
@@ -160,6 +159,11 @@ void setup(void){
 
 }
 
+
+/*------------------------------------------------------------------------------
+ * Funciones
+------------------------------------------------------------------------------*/
+
 unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max, 
                          unsigned short out_min, unsigned short out_max){
     
@@ -183,85 +187,3 @@ void move_servo(uint8_t servo,  unsigned short CCPR) {
     }
     return;
 }
-=======
-
-/*------------------------------------------------------------------------------
- * Variables
-------------------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------------------
- * Prototipos de funciones
-------------------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------------------
- * Interrupciones
-------------------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------------------
- * Ciclo principal
-------------------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------------------
- * Configuración
-------------------------------------------------------------------------------*/
-void setup(void){
-    
-    //Configuración SPI SLAVE de los puertos
-    TRISC = 0b00011000; // -> SDI y SCK entradas, SD0 como salida
-    PORTC = 0;
-    
-    // Configuración reloj interno
-    OSCCONbits.IRCF = 0b011;    // IRCF <2:0> 011 -> 500 kHz
-    OSCCONbits.SCS = 1;         // Oscilador interno
-      
-    // Configuración PWM
-    TRISCbits.TRISC2 = 1;       // RC2 -> CCP1 como entrada
-    TRISCbits.TRISC1 = 1;       // RC1 -> CCP2 como entrada
-    PR2 = 156;                  // periodo de 20 ms
-    
-    // Configuración CCP
-    CCP1CON = 0;                // Apagamos CCP1
-    CCP1CONbits.P1M = 0;        // Modo single output
-    
-    CCP1CONbits.CCP1M = 0b1100; // Asignación de modo a PWM1
-    CCP2CONbits.CCP2M = 0b1100; // Asignación de modo a PWM2
-    
-    CCPR1L = 155>>2;
-    CCP1CONbits.DC1B = 155 & 0b11;    // Valor inicial del duty cycle PWM1
-    
-    CCPR2L = 155>>2;
-    CCP2CONbits.DC2B0 = 155 & 0b01;
-    CCP2CONbits.DC2B1 = 155 & 0b10;   //  Valor inicial del duty cycle PWM2
-            
-    
-    PIR1bits.TMR2IF = 0;        // Limpiamos bandera de interrupcion del TMR2
-    T2CONbits.T2CKPS = 0b11;    // prescaler 1:16
-    T2CONbits.TMR2ON = 1;       // Encendemos TMR2
-    while(!PIR1bits.TMR2IF);    // Esperar un ciclo del TMR2
-    PIR1bits.TMR2IF = 0;        // Limpiamos bandera de interrupcion del TMR2 nuevamente
-    
-    TRISCbits.TRISC2 = 0;       // RC2 -> CCP1 como salida del PWM2
-    TRISCbits.TRISC1 = 0;       // RC1 -> CCP2 como salida del PWM2
-    
-    //Configuración del SPI (SLAVE)
-    
-    // SSPCON <5:0>
-    SSPCONbits.SSPM = 0b0100;   // -> SPI Esclavo, SS hablitado
-    SSPCONbits.CKP = 0;         // -> Reloj inactivo en 0
-    SSPCONbits.SSPEN = 1;       // -> Habilitamos pines de SPI
-    // SSPSTAT<7:6>
-    SSPSTATbits.CKE = 1;        // -> Dato enviado cada flanco de subida
-    SSPSTATbits.SMP = 0;        // -> Dato al final del pulso de reloj
-        
-    // Configuracion interrupciones
-    INTCONbits.PEIE = 1;        // Habilitamos int. de perifericos
-    INTCONbits.GIE = 1;         // Habilitamos int. globales
-    
-    PIR1bits.SSPIF = 0;         // Limpiamos bandera de SPI
-    PIE1bits.SSPIE = 1;         // Habilitamos int. de SPI
-   
-}
-/*------------------------------------------------------------------------------
- * Funciones
-------------------------------------------------------------------------------*/
->>>>>>> origin/master
