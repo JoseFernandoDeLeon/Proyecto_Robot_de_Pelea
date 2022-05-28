@@ -78,7 +78,7 @@ void write_EEPROM(uint8_t address, uint8_t data);  // Prototipo de función para 
 ------------------------------------------------------------------------------*/
 void __interrupt() isr (void){
     
-    if (INTCONbits.RBIF)        // Fue interrupción IOCB?
+    if (INTCONbits.RBIF)        // Fue interrupción  IOCB?
     {
         if (!PORTBbits.RB0){
             mode_flag = !mode_flag;
