@@ -52,23 +52,24 @@ unsigned short CCPR_2 = 0;        // Variable para almacenar ancho de pulso al h
 /*------------------------------------------------------------------------------
  * Prototipos de funciones
 ------------------------------------------------------------------------------*/
-void setup (void);
+void setup (void);                 // Prototipo de función setup
 
 unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max, 
-            unsigned short out_min, unsigned short out_max);
+            unsigned short out_min, unsigned short out_max);                // Prototipo de función de interpolación
 
-void move_servo(uint8_t servo, unsigned short CCPR);
+void move_servo(uint8_t servo, unsigned short CCPR);                // Prototipo de función de movimiento de servos
 /*------------------------------------------------------------------------------
  * Interrupciones
 ------------------------------------------------------------------------------*/
 void __interrupt() isr (void){
-    if (PIR1bits.SSPIF){
-        if (PORTAbits.RA0 == 0){
-            CCPR_1 = SSPBUF;
+    
+    if (PIR1bits.SSPIF){             // ¿Fue interrupción del SPI?
+        if (PORTAbits.RA0 == 0){     // Verificamos RA0 (RD1 del master) para verificar a que servo enviar la posición
+            CCPR_1 = SSPBUF;         // Si RA0 == 0, enviar la posición al servo RP2
             move_servo(1,CCPR_1);
         }
-        else if (PORTAbits.RA0 == 1){
-            CCPR_2 = SSPBUF;
+        else if (PORTAbits.RA0 == 1){ 
+            CCPR_2 = SSPBUF;        // Si RA0 == 1, enviar la posición al servo LP2
             move_servo(2,CCPR_2);
         }
         
@@ -164,6 +165,7 @@ void setup(void){
  * Funciones
 ------------------------------------------------------------------------------*/
 
+//Función para interpolar valores de entrada a valores de salida
 unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max, 
                          unsigned short out_min, unsigned short out_max){
     
@@ -171,7 +173,7 @@ unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max,
 }
 
 
-/*Función para posicionar un servomotor en base al valor de un potenciómetro*/
+//Función para posicionar un servomotor en base al valor de un potenciómetro
 void move_servo(uint8_t servo,  unsigned short CCPR) {
         
     if (servo == 1){
