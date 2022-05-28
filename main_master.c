@@ -61,7 +61,7 @@ unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max,
 
 void move_servo(uint8_t servo, unsigned short CCPR);
 
-void send_data (uint8_t data, uint8_t slave);
+void send_data (uint8_t data);
 
 /*------------------------------------------------------------------------------
  * Interrupciones
@@ -75,14 +75,16 @@ void __interrupt() isr (void){
         }
         else if(ADCON0bits.CHS == 0b0001){
             PORTDbits.RD1 = 0;
-            send_data(ADRESH,1);
+            send_data(ADRESH);
+            __delay_ms(50);
         }
         else if (ADCON0bits.CHS == 0b0010){
             move_servo (2,CCPR_2);
         }
         else{
             PORTDbits.RD1 = 1;
-            send_data(ADRESH,1);
+            send_data(ADRESH);
+            __delay_ms(50);
         }
         PIR1bits.ADIF = 0;                  // Limpiamos bandera de interrupción
     }
@@ -110,7 +112,8 @@ void main(void) {
         __delay_us(1000);
         ADCON0bits.GO = 1;
         
-        } 
+        }
+        
     }
     return;
 }
@@ -192,20 +195,7 @@ void setup(void){
     PIE1bits.ADIE = 1;          // Habilitamos interrupcion de ADC
     
 }
-/*------------------------------------------------------------------------------
- * Funciones
-------------------------------------------------------------------------------*/
 
-/* Función para hacer la interpolación lineal del valor de la entrada analógica 
-*  usando solo el registro ADRESH (8 bits) al ancho de pulso del PWM (10 bits), 
-* usando la ecuación:
-*  y = y0 + [(y1 - y0)/(x1-x0)]*(x-x0)
-*  -------------------------------------------------------------------
-*  | x0 -> valor mínimo de ADC | y0 -> valor mínimo de ancho de pulso|
-*  | x  -> valor actual de ADC | y  -> resultado de la interpolación | 
-*  | x1 -> valor máximo de ADC | y1 -> valor máximo de ancho de puslo|
-*  ------------------------------------------------------------------- 
-*/
 unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max, 
                          unsigned short out_min, unsigned short out_max){
     
@@ -229,15 +219,13 @@ void move_servo(uint8_t servo,  unsigned short CCPR) {
     return;
 }
 
-void send_data (uint8_t data, uint8_t slave){
-    
-    if (slave == 1){
+void send_data (uint8_t data){
+
     PORTDbits.RD0 = 0;              // Habilitamos el esclavo para recibir datos
     SSPBUF = data;                  // Cargamos valor del contador al buffer
     while(!SSPSTATbits.BF){}        // Esperamos a que termine el envio
     PORTDbits.RD0 = 1;              // Deshabilitamos el esclavo hasta el siguiente envío.
-    
-    }
+
     return;
 }
 

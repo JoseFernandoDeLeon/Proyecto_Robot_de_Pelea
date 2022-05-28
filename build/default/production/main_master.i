@@ -2662,7 +2662,7 @@ unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max,
 
 void move_servo(uint8_t servo, unsigned short CCPR);
 
-void send_data (uint8_t data, uint8_t slave);
+void send_data (uint8_t data);
 
 
 
@@ -2675,15 +2675,17 @@ void __attribute__((picinterrupt(("")))) isr (void){
             move_servo (1,CCPR_1);
         }
         else if(ADCON0bits.CHS == 0b0001){
-            send_data(ADRESH,1);
             PORTDbits.RD1 = 0;
+            send_data(ADRESH);
+            _delay((unsigned long)((50)*(500000/4000.0)));
         }
         else if (ADCON0bits.CHS == 0b0010){
             move_servo (2,CCPR_2);
         }
         else{
-            send_data(ADRESH,1);
             PORTDbits.RD1 = 1;
+            send_data(ADRESH);
+            _delay((unsigned long)((50)*(500000/4000.0)));
         }
         PIR1bits.ADIF = 0;
     }
@@ -2712,6 +2714,7 @@ void main(void) {
         ADCON0bits.GO = 1;
 
         }
+
     }
     return;
 }
@@ -2793,7 +2796,7 @@ void setup(void){
     PIE1bits.ADIE = 1;
 
 }
-# 209 "main_master.c"
+
 unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max,
                          unsigned short out_min, unsigned short out_max){
 
@@ -2817,14 +2820,12 @@ void move_servo(uint8_t servo, unsigned short CCPR) {
     return;
 }
 
-void send_data (uint8_t data, uint8_t slave){
+void send_data (uint8_t data){
 
-    if (slave == 1){
     PORTDbits.RD0 = 0;
     SSPBUF = data;
     while(!SSPSTATbits.BF){}
     PORTDbits.RD0 = 1;
 
-    }
     return;
 }
