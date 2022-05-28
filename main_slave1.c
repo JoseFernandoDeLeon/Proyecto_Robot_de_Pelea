@@ -38,27 +38,71 @@
  * Constantes
 ------------------------------------------------------------------------------*/
 #define _XTAL_FREQ 500000       // Oscilador de 500 kHz
+#define IN_MIN 0                // Valor minimo de entrada del potenciometro
+#define IN_MAX 255              // Valor máximo de entrada del potenciometro
+#define OUT_MIN 20               // Valor minimo de ancho de pulso de señal PWM
+#define OUT_MAX 80              // Valor máximo de ancho de pulso de señal PWM
 
 /*------------------------------------------------------------------------------
  * Variables
 ------------------------------------------------------------------------------*/
+unsigned short CCPR_1 = 0;        // Variable para almacenar ancho de pulso al hacer la interpolación lineal
+unsigned short CCPR_2 = 0;        // Variable para almacenar ancho de pulso al hacer la interpolación lineal
 
 /*------------------------------------------------------------------------------
  * Prototipos de funciones
 ------------------------------------------------------------------------------*/
+void setup (void);                 // Prototipo de función setup
 
+unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max, 
+            unsigned short out_min, unsigned short out_max);                // Prototipo de función de interpolación
+
+void move_servo(uint8_t servo, unsigned short CCPR);                // Prototipo de función de movimiento de servos
 /*------------------------------------------------------------------------------
  * Interrupciones
 ------------------------------------------------------------------------------*/
-
+void __interrupt() isr (void){
+    
+    if (PIR1bits.SSPIF){             // ¿Fue interrupción del SPI?
+        if (PORTAbits.RA0 == 0){     // Verificamos RA0 (RD1 del master) para verificar a que servo enviar la posición
+            CCPR_1 = SSPBUF;         // Si RA0 == 0, enviar la posición al servo RP2
+            move_servo(1,CCPR_1);
+        }
+        else if (PORTAbits.RA0 == 1){ 
+            CCPR_2 = SSPBUF;        // Si RA0 == 1, enviar la posición al servo LP2
+            move_servo(2,CCPR_2);
+        }
+        
+        
+        PIR1bits.SSPIF = 0;             // Limpiamos bandera de interrupción
+    }
+    return;
+}
 /*------------------------------------------------------------------------------
  * Ciclo principal
 ------------------------------------------------------------------------------*/
+void main(void) {
+    setup();
+    while(1){
+        
+    }
+    return;
+}
 
 /*------------------------------------------------------------------------------
  * Configuración
 ------------------------------------------------------------------------------*/
 void setup(void){
+    
+    //Configuraciones de los puertos
+    ANSEL = 0;
+    ANSELH = 0;
+    
+    TRISA = 0b00100001;
+    PORTA = 0;
+    
+    TRISD = 0;
+    PORTD = 0;
     
     //Configuración SPI SLAVE de los puertos
     TRISC = 0b00011000; // -> SDI y SCK entradas, SD0 como salida
@@ -110,11 +154,38 @@ void setup(void){
     // Configuracion interrupciones
     INTCONbits.PEIE = 1;        // Habilitamos int. de perifericos
     INTCONbits.GIE = 1;         // Habilitamos int. globales
-    
-    PIR1bits.SSPIF = 0;         // Limpiamos bandera de SPI
+        
     PIE1bits.SSPIE = 1;         // Habilitamos int. de SPI
-   
+    PIR1bits.SSPIF = 0;         // Limpiamos bandera de SPI
+
 }
+
+
 /*------------------------------------------------------------------------------
  * Funciones
 ------------------------------------------------------------------------------*/
+
+//Función para interpolar valores de entrada a valores de salida
+unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max, 
+                         unsigned short out_min, unsigned short out_max){
+    
+    return (unsigned short)(out_min+((float)(out_max-out_min)/(in_max-in_min))*(value-in_min));
+}
+
+
+//Función para posicionar un servomotor en base al valor de un potenciómetro
+void move_servo(uint8_t servo,  unsigned short CCPR) {
+        
+    if (servo == 1){
+        CCPR = interpole(SSPBUF, IN_MIN, IN_MAX, OUT_MIN, OUT_MAX); // Valor de ancho de pulso
+        CCPR1L = (uint8_t)(CCPR>>2);    // Guardamos los 8 bits mas significativos en CPR1L
+        CCP1CONbits.DC1B = CCPR & 0b11; // Guardamos los 2 bits menos significativos en DC1B
+    }
+    else {
+        CCPR = interpole(SSPBUF, IN_MIN, IN_MAX, OUT_MIN, OUT_MAX); // Valor de ancho de pulso
+        CCPR2L = (uint8_t) (CCPR>>2);
+        CCP2CONbits.DC2B0 = CCPR & 0b10;
+        CCP2CONbits.DC2B1 = CCPR & 0b01;   
+    }
+    return;
+}

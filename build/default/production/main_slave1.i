@@ -2648,6 +2648,144 @@ extern __bank0 __bit __timeout;
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.35\\pic\\include\\c90\\stdint.h" 1 3
 # 35 "main_slave1.c" 2
+<<<<<<< HEAD
+# 49 "main_slave1.c"
+unsigned short CCPR_1 = 0;
+unsigned short CCPR_2 = 0;
+
+
+
+
+void setup (void);
+
+unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max,
+            unsigned short out_min, unsigned short out_max);
+
+void move_servo(uint8_t servo, unsigned short CCPR);
+
+
+
+void __attribute__((picinterrupt(("")))) isr (void){
+    if (PIR1bits.SSPIF){
+        if (PORTAbits.RA0 == 0){
+            CCPR_1 = SSPBUF;
+            move_servo(1,CCPR_1);
+        }
+        else if (PORTAbits.RA0 == 1){
+            CCPR_2 = SSPBUF;
+            move_servo(2,CCPR_2);
+        }
+
+
+        PIR1bits.SSPIF = 0;
+    }
+    return;
+}
+
+
+
+void main(void) {
+    setup();
+    while(1){
+
+    }
+    return;
+}
+
+
+
+
+void setup(void){
+
+
+    ANSEL = 0;
+    ANSELH = 0;
+
+    TRISA = 0b00100001;
+    PORTA = 0;
+
+    TRISD = 0;
+    PORTD = 0;
+
+
+    TRISC = 0b00011000;
+    PORTC = 0;
+
+
+    OSCCONbits.IRCF = 0b011;
+    OSCCONbits.SCS = 1;
+
+
+    TRISCbits.TRISC2 = 1;
+    TRISCbits.TRISC1 = 1;
+    PR2 = 156;
+
+
+    CCP1CON = 0;
+    CCP1CONbits.P1M = 0;
+
+    CCP1CONbits.CCP1M = 0b1100;
+    CCP2CONbits.CCP2M = 0b1100;
+
+    CCPR1L = 155>>2;
+    CCP1CONbits.DC1B = 155 & 0b11;
+
+    CCPR2L = 155>>2;
+    CCP2CONbits.DC2B0 = 155 & 0b01;
+    CCP2CONbits.DC2B1 = 155 & 0b10;
+
+
+    PIR1bits.TMR2IF = 0;
+    T2CONbits.T2CKPS = 0b11;
+    T2CONbits.TMR2ON = 1;
+    while(!PIR1bits.TMR2IF);
+    PIR1bits.TMR2IF = 0;
+
+    TRISCbits.TRISC2 = 0;
+    TRISCbits.TRISC1 = 0;
+
+
+
+
+    SSPCONbits.SSPM = 0b0100;
+    SSPCONbits.CKP = 0;
+    SSPCONbits.SSPEN = 1;
+
+    SSPSTATbits.CKE = 1;
+    SSPSTATbits.SMP = 0;
+
+
+    INTCONbits.PEIE = 1;
+    INTCONbits.GIE = 1;
+
+    PIE1bits.SSPIE = 1;
+    PIR1bits.SSPIF = 0;
+
+}
+
+unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max,
+                         unsigned short out_min, unsigned short out_max){
+
+    return (unsigned short)(out_min+((float)(out_max-out_min)/(in_max-in_min))*(value-in_min));
+}
+
+
+
+void move_servo(uint8_t servo, unsigned short CCPR) {
+
+    if (servo == 1){
+        CCPR = interpole(SSPBUF, 0, 255, 20, 80);
+        CCPR1L = (uint8_t)(CCPR>>2);
+        CCP1CONbits.DC1B = CCPR & 0b11;
+    }
+    else {
+        CCPR = interpole(SSPBUF, 0, 255, 20, 80);
+        CCPR2L = (uint8_t) (CCPR>>2);
+        CCP2CONbits.DC2B0 = CCPR & 0b10;
+        CCP2CONbits.DC2B1 = CCPR & 0b01;
+    }
+    return;
+=======
 # 61 "main_slave1.c"
 void setup(void){
 
@@ -2705,4 +2843,5 @@ void setup(void){
     PIR1bits.SSPIF = 0;
     PIE1bits.SSPIE = 1;
 
+>>>>>>> origin/master
 }

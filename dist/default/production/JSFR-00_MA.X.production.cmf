@@ -32,7 +32,7 @@ cstackBANK1 BANK1 1 A0 A0 15 1 1
 intentry CODE 0 4 4 C 2 1
 bssBANK1 BANK1 1 B5 B5 9 1 1
 config CONFIG 4 2007 2007 2 2 1
-$C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
+$C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.o
 idloc IDLOC 5 2000 2000 4 2 1
 reset_vec CODE 0 0 0 3 2 1
 end_init CODE 0 10 10 3 2 1
@@ -83,22 +83,22 @@ STRING 1000-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\JSFR-00_MA.X.production.o
-13 cinit CODE >514:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
-13 cinit CODE >517:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
-13 cinit CODE >546:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
-14 cinit CODE >547:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
-15 cinit CODE >548:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
-16 cinit CODE >549:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
-17 cinit CODE >550:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
-18 cinit CODE >551:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
-19 cinit CODE >552:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
-1A cinit CODE >553:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
-1B cinit CODE >554:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
-1C cinit CODE >555:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
-1D cinit CODE >556:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
-1E cinit CODE >562:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
-1E cinit CODE >564:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
-1F cinit CODE >565:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.s
+13 cinit CODE >514:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.s
+13 cinit CODE >517:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.s
+13 cinit CODE >546:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.s
+14 cinit CODE >547:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.s
+15 cinit CODE >548:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.s
+16 cinit CODE >549:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.s
+17 cinit CODE >550:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.s
+18 cinit CODE >551:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.s
+19 cinit CODE >552:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.s
+1A cinit CODE >553:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.s
+1B cinit CODE >554:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.s
+1C cinit CODE >555:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.s
+1D cinit CODE >556:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.s
+1E cinit CODE >562:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.s
+1E cinit CODE >564:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.s
+1F cinit CODE >565:C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.s
 4 intentry CODE >79:C:\Users\THEJ0S3FER\Desktop\Quinto semestre\Progra de micros\JSFR-00_MA.X\main_master.c
 383 text11 CODE >10:C:\Program Files\Microchip\xc8\v2.35\pic\sources\c90\common\sprcadd.c
 383 text11 CODE >21:C:\Program Files\Microchip\xc8\v2.35\pic\sources\c90\common\sprcadd.c
@@ -826,10 +826,10 @@ __Hspace_3 0 0 ABS 0 - -
 __Hspace_4 4010 0 ABS 0 - -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
+___sp 0 0 STACK 2 stack C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.o
 _main 17E4 0 CODE 0 maintext dist/default/production\JSFR-00_MA.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\JSFR-00_MA.X.production.o
-start 20 0 CODE 0 init C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
+start 20 0 CODE 0 init C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.o
 ___flmul@aexp 4C 0 BANK0 1 cstackBANK0 dist/default/production\JSFR-00_MA.X.production.o
 ___flmul@bexp 4D 0 BANK0 1 cstackBANK0 dist/default/production\JSFR-00_MA.X.production.o
 ___flmul@prod 4E 0 BANK0 1 cstackBANK0 dist/default/production\JSFR-00_MA.X.production.o
@@ -839,12 +839,12 @@ _OPTION_REGbits 81 0 ABS 0 - dist/default/production\JSFR-00_MA.X.production.o
 interpole@out_max A9 0 BANK1 1 cstackBANK1 dist/default/production\JSFR-00_MA.X.production.o
 interpole@out_min A7 0 BANK1 1 cstackBANK1 dist/default/production\JSFR-00_MA.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.o
 _OSCCONbits 8F 0 ABS 0 - dist/default/production\JSFR-00_MA.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\JSFR-00_MA.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
@@ -871,8 +871,8 @@ __end_of___flmul 706 0 CODE 0 text8 dist/default/production\JSFR-00_MA.X.product
 __end_of___fltol 1D28 0 CODE 0 text7 dist/default/production\JSFR-00_MA.X.production.o
 _send_data FD0 0 CODE 0 text3 dist/default/production\JSFR-00_MA.X.production.o
 __Umul8_16@multiplicand 70 0 COMMON 1 cstackCOMMON dist/default/production\JSFR-00_MA.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
-___stacklo 0 0 ABS 0 - C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
+___stackhi 0 0 ABS 0 - C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.o
+___stacklo 0 0 ABS 0 - C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.o
 ___fladd@a 58 0 BANK0 1 cstackBANK0 dist/default/production\JSFR-00_MA.X.production.o
 ___fladd@b 54 0 BANK0 1 cstackBANK0 dist/default/production\JSFR-00_MA.X.production.o
 ___fldiv@a 20 0 BANK0 1 cstackBANK0 dist/default/production\JSFR-00_MA.X.production.o
@@ -886,7 +886,7 @@ __pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\JSFR-00_MA.X.pro
 __pcstackBANK1 A0 0 BANK1 1 cstackBANK1 dist/default/production\JSFR-00_MA.X.production.o
 _SSPBUF 13 0 ABS 0 - dist/default/production\JSFR-00_MA.X.production.o
 ?_interpole A5 0 BANK1 1 cstackBANK1 dist/default/production\JSFR-00_MA.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
+___int_sp 0 0 STACK 2 stack C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -942,7 +942,7 @@ __end_of_isr 1AC8 0 CODE 0 text2 dist/default/production\JSFR-00_MA.X.production
 interpole@in_max A6 0 BANK1 1 cstackBANK1 dist/default/production\JSFR-00_MA.X.production.o
 interpole@in_min A5 0 BANK1 1 cstackBANK1 dist/default/production\JSFR-00_MA.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsmv0.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\THEJ0S~1\AppData\Local\Temp\xcAsis4.o
 __end_of___xxtofl 2000 0 CODE 0 text6 dist/default/production\JSFR-00_MA.X.production.o
 __LbssBANK1 0 0 ABS 0 bssBANK1 -
 _PIE1bits 8C 0 ABS 0 - dist/default/production\JSFR-00_MA.X.production.o
