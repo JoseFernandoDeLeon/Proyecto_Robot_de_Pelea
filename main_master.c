@@ -51,6 +51,12 @@
 unsigned short CCPR_1 = 0;        // Variable para almacenar ancho de pulso al hacer la interpolación lineal
 unsigned short CCPR_2 = 0;        // Variable para almacenar ancho de pulso al hacer la interpolación lineal
 
+uint8_t pot_1 = 0;                // Variable para almacenar el valor a guardar de la posición del servo 1
+uint8_t pot_2 = 0;                // Variable para almacenar el valor a guardar de la posición del servo 2
+uint8_t pot_3 = 0;                // Variable para almacenar el valor a guardar de la posición del servo 3
+uint8_t pot_4 = 0;                // Variable para almacenar el valor a guardar de la posición del servo 4
+
+uint8_t mode_flag = 0;
 /*------------------------------------------------------------------------------
  * Prototipos de funciones
 ------------------------------------------------------------------------------*/
@@ -63,10 +69,31 @@ void move_servo(uint8_t servo, unsigned short CCPR);           // Prototipo de f
 
 void send_data (uint8_t data);                  //Prototipo de función para enviar información
 
+uint8_t read_EEPROM(uint8_t address);           // Prototipo de función para leer valores de la EEPROM
+
+void write_EEPROM(uint8_t address, uint8_t data);  // Prototipo de función para escribir valores de la EEPROM
+
 /*------------------------------------------------------------------------------
  * Interrupciones
 ------------------------------------------------------------------------------*/
 void __interrupt() isr (void){
+    
+    if (INTCONbits.RBIF)
+    {
+        if (!PORTBbits.RB0){
+            mode_flag = !mode_flag;
+        }
+   
+        if (!PORTBbits.RB1){
+            
+        }
+        
+        if (!PORTBbits.RB2){
+            
+        }
+                
+        INTCONbits.RBIF = 0;    // Limpiamos bandera de interrupción RBIF
+    }
     
     if(PIR1bits.ADIF){                      // Fue interrupción del ADC?
         
@@ -113,14 +140,23 @@ void main(void) {
         ADCON0bits.GO = 1;
         
         }
-        
+        if (mode_flag == 0){
+            PORTDbits.RD2 = 1;
+            PORTDbits.RD3 = 0;
+        }
+        else {
+            PORTDbits.RD2 = 0;
+            PORTDbits.RD3 = 1;
+        }
     }
+   
     return;
 }
 /*------------------------------------------------------------------------------
  * Configuración
 ------------------------------------------------------------------------------*/
 void setup(void){
+    //Configuración de los puertos
     ANSEL = 0b11111111;        // PORTA y PORTE como entrada analógica
     ANSELH = 0;                // I/O digitales
     
@@ -129,6 +165,22 @@ void setup(void){
             
     TRISD = 0b00000000;        // TRISD como salida
     PORTD = 0b00000000;        // RD0 habilitado (SS SLAVE I)
+    
+    // Configuración de las IOCB
+    TRISB = 0b00000111;         // RB0, RB1 & RB2 de PORTB como entradas
+    PORTB = 0;
+    
+    OPTION_REGbits.nRBPU = 0;   // Habilitamos resistencias de pull-up del PORTB
+    WPUBbits.WPUB0 = 1;         // Habilitamos resistencia de pull-up de RB0, RB1 & RB2
+    WPUBbits.WPUB1 = 1;
+    WPUBbits.WPUB2 = 1;
+    
+    INTCONbits.RBIE = 1;        // Habilitamos interrupciones del PORTB
+    IOCBbits.IOCB0 = 1;         // Habilitamos IOCB en RB0, RB1 & RB2
+    IOCBbits.IOCB1 = 1;
+    IOCBbits.IOCB2 = 1;
+    
+    INTCONbits.RBIF = 0;        // Limpiamos bandera de interrupción de PORTB
     
     //Configuración SPI MASTER de puertos
     TRISC = 0b00010000;         // -> SDI entrada, SCK y SD0 como salida
@@ -196,6 +248,9 @@ void setup(void){
     
 }
 
+/*------------------------------------------------------------------------------
+ * Funciones
+------------------------------------------------------------------------------*/
 //Función para interpolar valores de entrada a valores de salida
 unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max, 
                          unsigned short out_min, unsigned short out_max){
@@ -231,3 +286,30 @@ void send_data (uint8_t data){
     return;
 }
 
+// Función para leer valores de la EEPROM
+uint8_t read_EEPROM(uint8_t address){
+    EEADR = address;
+    EECON1bits.EEPGD = 0;       // Lectura a la EEPROM
+    EECON1bits.RD = 1;          // Obtenemos dato de la EEPROM
+    return EEDAT;               // Regresamos dato 
+}
+
+//Función para escribir valores en la EEPROM
+void write_EEPROM(uint8_t address, uint8_t data){
+    EEADR = address;
+    EEDAT = data;
+    EECON1bits.EEPGD = 0;       // Escritura a la EEPROM
+    EECON1bits.WREN = 1;        // Habilitamos escritura en la EEPROM
+    
+    INTCONbits.GIE = 0;         // Deshabilitamos interrupciones
+    INTCONbits.PEIE = 0;        // Deshabilitamos interrupciones de los puertos
+    EECON2 = 0x55;      
+    EECON2 = 0xAA;
+    
+    EECON1bits.WR = 1;          // Iniciamos escritura
+    
+    EECON1bits.WREN = 0;        // Deshabilitamos escritura en la EEPROM
+    INTCONbits.RBIF = 0;
+    INTCONbits.GIE = 1;         // Habilitamos interrupciones
+    INTCONbits.PEIE = 1;        // Habilitamos interrupciones de los puertos
+}

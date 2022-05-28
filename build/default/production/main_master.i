@@ -2652,6 +2652,12 @@ extern __bank0 __bit __timeout;
 unsigned short CCPR_1 = 0;
 unsigned short CCPR_2 = 0;
 
+uint8_t pot_1 = 0;
+uint8_t pot_2 = 0;
+uint8_t pot_3 = 0;
+uint8_t pot_4 = 0;
+
+uint8_t mode_flag = 0;
 
 
 
@@ -2664,10 +2670,33 @@ void move_servo(uint8_t servo, unsigned short CCPR);
 
 void send_data (uint8_t data);
 
+uint8_t read_EEPROM(uint8_t address);
+
+void write_EEPROM(uint8_t address, uint8_t data);
+
 
 
 
 void __attribute__((picinterrupt(("")))) isr (void){
+
+    if (INTCONbits.RBIF)
+    {
+        if (!PORTBbits.RB0){
+            mode_flag = !mode_flag;
+
+
+        }
+
+        if (!PORTBbits.RB1){
+
+        }
+
+        if (!PORTBbits.RB2){
+
+        }
+
+        INTCONbits.RBIF = 0;
+    }
 
     if(PIR1bits.ADIF){
 
@@ -2714,14 +2743,23 @@ void main(void) {
         ADCON0bits.GO = 1;
 
         }
-
+        if (mode_flag == 0){
+            PORTDbits.RD2 = 1;
+            PORTDbits.RD3 = 0;
+        }
+        else {
+            PORTDbits.RD2 = 0;
+            PORTDbits.RD3 = 1;
+        }
     }
+
     return;
 }
 
 
 
 void setup(void){
+
     ANSEL = 0b11111111;
     ANSELH = 0;
 
@@ -2730,6 +2768,22 @@ void setup(void){
 
     TRISD = 0b00000000;
     PORTD = 0b00000000;
+
+
+    TRISB = 0b00000111;
+    PORTB = 0;
+
+    OPTION_REGbits.nRBPU = 0;
+    WPUBbits.WPUB0 = 1;
+    WPUBbits.WPUB1 = 1;
+    WPUBbits.WPUB2 = 1;
+
+    INTCONbits.RBIE = 1;
+    IOCBbits.IOCB0 = 1;
+    IOCBbits.IOCB1 = 1;
+    IOCBbits.IOCB2 = 1;
+
+    INTCONbits.RBIF = 0;
 
 
     TRISC = 0b00010000;
@@ -2797,6 +2851,10 @@ void setup(void){
 
 }
 
+
+
+
+
 unsigned short interpole(uint8_t value, uint8_t in_min, uint8_t in_max,
                          unsigned short out_min, unsigned short out_max){
 
@@ -2820,6 +2878,7 @@ void move_servo(uint8_t servo, unsigned short CCPR) {
     return;
 }
 
+
 void send_data (uint8_t data){
 
     PORTDbits.RD0 = 0;
@@ -2828,4 +2887,32 @@ void send_data (uint8_t data){
     PORTDbits.RD0 = 1;
 
     return;
+}
+
+
+uint8_t read_EEPROM(uint8_t address){
+    EEADR = address;
+    EECON1bits.EEPGD = 0;
+    EECON1bits.RD = 1;
+    return EEDAT;
+}
+
+
+void write_EEPROM(uint8_t address, uint8_t data){
+    EEADR = address;
+    EEDAT = data;
+    EECON1bits.EEPGD = 0;
+    EECON1bits.WREN = 1;
+
+    INTCONbits.GIE = 0;
+    INTCONbits.PEIE = 0;
+    EECON2 = 0x55;
+    EECON2 = 0xAA;
+
+    EECON1bits.WR = 1;
+
+    EECON1bits.WREN = 0;
+    INTCONbits.RBIF = 0;
+    INTCONbits.GIE = 1;
+    INTCONbits.PEIE = 1;
 }
